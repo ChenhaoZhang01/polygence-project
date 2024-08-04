@@ -6,7 +6,8 @@
   "permissions": [
         "activeTab",
         "background",
-	"scripting"
+	"scripting",
+        "https://*/"
 ],
   "action": {
     "default_popup": "hello.html",
