@@ -5,6 +5,10 @@ function myFunction() {
     document.getElementById("output").innerHTML = message;
     const url = new URL('http://127.0.0.1:5000/echo');
     url.searchParams.set('message', message);
-    chrome.tabs.create({ url: url.toString() });
-   }
-};
+    fetch(url.toString())
+    .then(response => response.text())
+    .then((response) => {
+    console.log(response);
+    document.getElementById("output").innerHTML = response;
+    });
+}
