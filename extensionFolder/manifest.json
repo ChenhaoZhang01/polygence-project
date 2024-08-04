@@ -1,8 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Microaggression Identifier",
+  "description": "Reducing Offensive Language",
   "version": "1.0",
+  "permissions": [
+        "activeTab",
+        "background",
+	"scripting"
+],
   "action": {
     "default_popup": "hello.html",
     "default_icon": "hello_extensions.png"
