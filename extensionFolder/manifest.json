@@ -1,16 +1,25 @@
 {
   "manifest_version": 3,
   "name": "Microaggression Identifier",
-  "description": "Reducing Offensive Language",
+  "description": "",
   "version": "1.0",
   "permissions": [
         "activeTab",
         "background",
 	"scripting",
-        "https://*/"
+	"storage"
 ],
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://www.x.com/*"],
+      "js": ["script.js"]
+    }
+  ],
+  "host_permissions": [
+    "https://x.com/*"
+  ],
   "action": {
     "default_popup": "hello.html",
-    "default_icon": "hello_extensions.png"
+    "default_icon": "polygence_logo.png"
   }
 }
