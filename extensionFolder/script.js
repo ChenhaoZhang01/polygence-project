@@ -1,8 +1,20 @@
-function trackTweet() {
-    const tweetTextarea = document.querySelector('div[aria-label="Tweet text"]');
+let offsetkey=null;
+
+document.addEventListener('click', function(event) {
+    var clickedElement = event.target;
+    if (clickedElement.hasAttribute('data-offset-key')) {
+        offsetkey = clickedElement.getAttribute('data-offset-key');
+        console.log('Data Offset Key:', offsetkey);
+    } else {
+        console.log('No data-offset-key found on the clicked element.');
+    }
+});
+
+function trackTweet(offsetkey) {
+    const tweetTextarea = document.querySelector(`span[data-offset-key="${offsetkey}"]`);
+    console.log('Tweet Textarea:', tweetTextarea);
     if (tweetTextarea) {
         const tweetInput = tweetTextarea.innerText;
-        console.log('Captured tweet:', tweetInput);        
         chrome.storage.local.set({ tweetInput: tweetInput }, function() {
             if (chrome.runtime.lastError) {
                 console.error('Error:', chrome.runtime.lastError);
@@ -11,59 +23,20 @@ function trackTweet() {
             }
         });
     } else {
-        console.log('Tweet textarea not found.');
+        console.log('Tweet text not found.');
     }
 }
 
-function observeDOMChanges() {
-    console.log("stage 0");
-    const targetNode = document.body;
-    if (targetNode) {
-        console.log("stage 1");
-        const observer = new MutationObserver((mutations) => {
-            console.log("stage 2");
-            mutations.forEach((mutation) => {
-                console.log("stage 3");
-                mutation.addedNodes.forEach((node) => {
-                    console.log('Node added:', node);
-
-                    if (node.nodeType === 1) {
-                        console.log('Element node detected:', node);
-
-                        if (node.querySelector('div[aria-label="Tweet text"]')) {
-                            console.log('Tweet textarea detected by MutationObserver');
-                            trackTweet();
-                        }
-                    } else {
-                        console.log('Non element node detected:', node);
-                    }
-                });
-                if (mutation.target) {
-                    console.log('Mutation target:', mutation.target);
-                    if (mutation.target.querySelector('div[aria-label="Tweet text"]')) {
-                        console.log('Tweet textarea detected in mutation target');
-                        trackTweet();
-                    }
-                }
-            });
-        });
-        const config = { childList: true, subtree: true };
-        observer.observe(targetNode, config);
-        console.log('MutationObserver now observing the DOM.');
-    } else {
-        console.error('Target node for MutationObserver not available.');
-    }
-}
-
-document.addEventListener('DOMContentLoaded', observeDOMChanges);
-	
 
 //keydown code
-//window.addEventListener('keypress',function(event){
-//document.addEventListener('keydown', function(event) {
-//    console.log("Key pressed: ${event.key}"); 
-//    trackTweet(); 
-//});
+window.addEventListener('keypress', function(event) {
+    console.log("Key pressed"); 
+    if (offsetkey) {
+        trackTweet(offsetkey);
+    } else {
+        console.log('No offset key available to track the tweet.');
+    }
+});
 
 //original code
 //document.getElementById("InputText").onkeypress = function() {myFunction()};
