@@ -23,6 +23,10 @@
       "js": ["instagram.js"]
     },
     {
+      "matches": ["https://*.discord.com/channels/*"],
+      "js": ["discord.js"]
+    },
+    {
       "matches": ["https://*.x.com/home"],
       "js": ["script.js"]
     }
