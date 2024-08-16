@@ -11,12 +11,26 @@
 ],
   "content_scripts": [
     {
-      "matches": ["https://x.com/*", "https://www.x.com/*"],
+      "matches": ["https://*.facebook.com/*"],
+      "js": ["facebook.js"]
+    },
+    {
+      "matches": ["https://*.instagram.com/direct/*"],
+      "js": ["instagram.js"]
+    },
+    {
+      "matches": ["https://*.messenger.com/*"],
+      "js": ["instagram.js"]
+    },
+    {
+      "matches": ["https://*.x.com/home"],
       "js": ["script.js"]
     }
   ],
   "host_permissions": [
-    "https://x.com/*"
+    "https://*.facebook.com/*",
+    "https://*.instagram.com/*",
+    "https://*.x.com/*"
   ],
   "action": {
     "default_popup": "hello.html",
