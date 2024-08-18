@@ -23,7 +23,7 @@ function handleKeyPress(event) {
 }
 
 function addInputFieldListener() {
-  const inputField = document.querySelector('div[aria-label="Message"]');
+  const inputField = document.querySelector(`div[aria-label="Message"]`);
   if (inputField) {
     inputField.addEventListener('keydown', handleKeyPress, true);
   }
@@ -33,9 +33,6 @@ const observer = new MutationObserver(addInputFieldListener);
 observer.observe(document.body, { childList: true, subtree: true });
 
 document.addEventListener("DOMContentLoaded", addInputFieldListener);
-
-
-
 
 
 

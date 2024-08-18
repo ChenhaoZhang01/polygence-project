@@ -20,7 +20,7 @@
     },
     {
       "matches": ["https://*.messenger.com/*"],
-      "js": ["instagram.js"]
+      "js": ["messenger.js"]
     },
     {
       "matches": ["https://*.discord.com/channels/*"],
@@ -28,7 +28,7 @@
     },
     {
       "matches": ["https://*.x.com/home"],
-      "js": ["script.js"]
+      "js": ["twitter.js"]
     }
   ],
   "host_permissions": [

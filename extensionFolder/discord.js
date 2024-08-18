@@ -1,3 +1,41 @@
+let microaggression = true;
+
+function handleKeyPress(event) {
+  if (event.key === "Enter" && !event.shiftKey) {
+    if (microaggression) {
+      event.preventDefault();
+      const userConfirmed = confirm("This message could contain microaggressions. Are you sure you want to send it?");
+      if (userConfirmed) {
+        const inputField = event.target;
+        inputField.value += "\n"; // Mimic pressing Enter again to send the message
+        const keyboardEvent = new KeyboardEvent('keypress', {
+          key: 'Enter',
+          code: 'Enter',
+          keyCode: 13,
+          which: 13,
+          bubbles: true
+        });
+        inputField.dispatchEvent(keyboardEvent);
+      }
+    }
+  }
+}
+
+function addInputFieldListener() {
+  const inputField = document.querySelector('div[role="textbox"]');
+  if (inputField) {
+    inputField.addEventListener('keydown', handleKeyPress, true);
+    console.log("Input field found and listener attached.");
+  } else {
+    console.log("Input field not found.");
+  }
+}
+
+const observer = new MutationObserver(addInputFieldListener);
+observer.observe(document.body, { childList: true, subtree: true });
+
+document.addEventListener("DOMContentLoaded", addInputFieldListener);
+
 function trackMessage() {
     const tweetTextarea = document.querySelector(`span[data-slate-string="true"]`);
     console.log('Tweet Textarea:', tweetTextarea);
