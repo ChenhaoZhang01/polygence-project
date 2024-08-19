@@ -3,10 +3,10 @@ let microaggression = true;
 
 function handleTweetClick(event) {
   if (microaggression) {
-    event.preventDefault();
     const userConfirmed = confirm("This message could contain microaggressions. Are you sure you want to send it?");
-    if (userConfirmed) {
-      event.target.click(); 
+    if (!userConfirmed) {
+        event.preventDefault();
+        event.stopPropagation();
     }
   }
 }

@@ -6,6 +6,11 @@ function handlePostClick(event) {
     const userConfirmed = confirm("This message could contain microaggressions. Are you sure you want to send it?");
     if (userConfirmed) {
       event.target.click();
+      if (!userConfirmed) {
+        console.log("Preventing message")
+        event.preventDefault();
+        event.stopPropagation();
+      }
     }
   }
 }
