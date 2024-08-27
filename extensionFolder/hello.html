@@ -2,37 +2,80 @@
 <html> 
 <head> 
     <title>Microaggression Identifier</title> 
-    <script src="popup.js"></script>
+    <script src="popup.js" defer></script>
+    <link rel="stylesheet" href="hello.css">
 </head> 
 <body> 
-    <p>Check for Microaggressions</p>
+    <p id="trackerHead">Check for Microaggressions</p>
     <input type="text" id="InputText" placeholder="Check Here...">
     <button id="SubmitButton">Submit</button>
     <p id="output"></p>
 
     <hr>
 
-    <p>Tweet tracker</p>
-    <p id="tweetDisplay">No message tracked yet.</p> 
+    <p id="trackerHead">Tweet tracker</p>
+    <p id="tweetDisplay">No message tracked yet.</p>
     <button id="refreshBtn">Refresh</button>
 
     <hr>
-
-    <div>
-    <button class="toggle-button" data-index="0">Facebook</button>
-    </div>
-    <div>
-    <button class="toggle-button" data-index="1">Instagram</button>
-    </div>
-    <div>
-    <button class="toggle-button" data-index="2">Messenger</button>
-    </div>
-    <div>
-    <button class="toggle-button" data-index="3">Discord</button>
-    </div>
-    <div>
-    <button class="toggle-button" data-index="4">Twitter</button>
+    <p id="trackerHead">Settings for Sites</p>
+    <div class="dropdown-container">
+        <span class="dropdown-label">Twitter</span>
+        <select id="twitterSelect">
+            <option value="0">No Identifying</option>
+            <option value="1">Warning Text</option>
+            <option value="def">Warning Text & Popup</option>
+            <option value="2">Block Sending</option>
+        </select>
     </div>
 
+    <div class="dropdown-container">
+        <span class="dropdown-label">Facebook</span>
+        <select id="facebookSelect">
+            <option value="0">No Identifying</option>
+            <option value="1">Warning Text</option>
+            <option value="def">Warning Text & Popup</option>
+            <option value="2">Block Sending</option>
+        </select>
+    </div>
+
+    <div class="dropdown-container">
+        <span class="dropdown-label">Instagram</span>
+        <select id="instagramSelect">
+            <option value="0">No Identifying</option>
+            <option value="1">Warning Text</option>
+            <option value="def">Warning Text & Popup</option>
+            <option value="2">Block Sending</option>
+        </select>
+    </div>
+
+    <div class="dropdown-container">
+        <span class="dropdown-label">Messenger</span>
+        <select id="messengerSelect">
+            <option value="0">No Identifying</option>
+            <option value="1">Warning Text</option>
+            <option value="def">Warning Text & Popup</option>
+            <option value="2">Block Sending</option>
+        </select>
+    </div>
+
+    <div class="dropdown-container">
+        <span class="dropdown-label">Discord</span>
+        <select id="discordSelect">
+            <option value="0">No Identifying</option>
+            <option value="1">Warning Text</option>
+            <option value="def">Warning Text & Popup</option>
+            <option value="2">Block Sending</option>
+        </select>
+    </div>
+    <hr>
+    <p id="trackerHead">Popup Settings</p>
+    <div>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </div>
+    <br>
+    <div>
+        <button id="resetDefaults">Return to Default</button>
+    </div>
 </body> 
 </html>
