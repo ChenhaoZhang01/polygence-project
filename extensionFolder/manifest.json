@@ -29,11 +29,11 @@
     {
       "matches": ["https://*.x.com/home"],
       "js": ["twitter.js"]
-    }
+    },
     {
       "matches": ["https://*.xcom.com/home/*"],
       "js": ["twitterRed.js"]
-    },
+    }
   ],
   "host_permissions": [
     "https://*.facebook.com/*",
