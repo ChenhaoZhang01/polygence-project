@@ -1,5 +1,3 @@
-
-let val = 'null';
 document.addEventListener('DOMContentLoaded', function() {
     const tweetDisplayDiv = document.getElementById('tweetDisplay');
     const refreshBtn = document.getElementById('refreshBtn');
@@ -90,6 +88,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // document.getElementById('twitterSelect').addEventListener('change', () => switchScript('twitter'));
 // document.getElementById('facebookSelect').addEventListener('change', () => switchScript('facebook'));
