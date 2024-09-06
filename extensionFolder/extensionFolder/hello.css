@@ -1,0 +1,88 @@
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode button {
+    background-color: #333333;
+    color: #e0e0e0;
+}
+
+body.dark-mode button:hover {
+    background-color: #4f4f4f;
+}
+
+body.dark-mode button:active {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px #666;
+    transform: translateY(2px);
+}
+
+body.dark-mode select {
+    background-color: #333333;
+    color: #e0e0e0;
+}
+
+body {
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
+
+p, input, button, select {
+    font-family: Georgia, serif;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #1976D2;
+}
+
+button:active {
+    background-color: #155a8a;
+    box-shadow: 0 4px #666;
+    transform: translateY(2px);
+}
+
+select {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dropdown-label {
+    margin-right: 30px;
+    font-size: 16px;
+    line-height: 34px;
+}
+
+#trackerHead {
+    font-weight: bold;
+}
