@@ -1,5 +1,5 @@
 let val = 'null';
-let data = 'null'
+let data = 'null';
 
 chrome.storage.local.get(['messengerSetting'], function(result) {
     val= result.messengerSetting || 'def';

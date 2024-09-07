@@ -11,13 +11,13 @@ CORS(app)
 def print_message():
     try:
         data = request.get_json()
-        message = data.get('message', '')  
-        os.system(f'echo {message}')  
+        message = data.get('message', '')
+        os.system(f'echo {message}')
         return jsonify({'status': 'success', 'message': 'Message printed'}), 200
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
-data1 = 'null'
+data1 = 0
 @app.route('/data', methods=['GET'])
 def send_data():
     csv_file_path = '../classifier/data/microaggressions.csv'
@@ -45,7 +45,7 @@ def send_data():
                 pass
             pass
     print(data1)
-    return jsonify({data1})
+    return jsonify({'data1': data1}), 200
         
 
 
