@@ -7,28 +7,21 @@ chrome.runtime.onMessage.addListener((request) => {
             },
             body: JSON.stringify({ message: request.message }),
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
-    }
-});
-
-chrome.runtime.onMessage.addListener((message,) => {
-    if (message.action === 'requestData') {
-        fetch('http://127.0.0.1:5000/data')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Data received:', data);
-                const data1 = data.data1;
-
-                chrome.tabs.query({}, (tabs) => {
-                    tabs.forEach((tab) => {
-                        chrome.tabs.sendMessage(tab.id, { action: 'updateData', data: data1 });
-                    });
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received: ', data.label);
+            const data1 = data.label;
+            console.log('Updated Data: ', data1);
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                if (tabs.length > 0) {
+                    chrome.tabs.sendMessage(tabs[0].id, { action: 'updateData', data: data1 });
+                }
             });
+        })
     }
 });
-

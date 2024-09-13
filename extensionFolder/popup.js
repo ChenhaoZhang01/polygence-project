@@ -1,16 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
     const tweetDisplayDiv = document.getElementById('tweetDisplay');
-    const refreshBtn = document.getElementById('refreshBtn');
+    const submitButton = document.getElementById('SubmitButton');
+    const inputText = document.getElementById('InputText');
+    let globalData;
     chrome.storage.local.get('tweetInput', function(result) {
         console.log("refreshing tweet");
         tweetDisplayDiv.textContent = ("Currently Tracking: " + result.tweetInput) || 'No tweet tracked.';
     });
 
-    refreshBtn.addEventListener('click', function() {
-        console.log("refreshing tweet");
-        chrome.storage.local.get('tweetInput', function(result) {
-            tweetDisplayDiv.textContent = ("Currently Tracking: " + result.tweetInput) || 'No tweet tracked.';
-        });
+
+    chrome.runtime.onMessage.addListener((message) => {
+        if (message.action === 'updateData') {
+            globalData = message.data;
+        }
+    });
+    
+    submitButton.addEventListener('click', function() {
+        chrome.runtime.sendMessage({type: 'PRINT_MESSAGE', message: inputText});
+        setInterval(() => {
+        if(globalData == 1){
+            document.getElementById("output").innerHTML = "This message contains a microaggression.";
+        }
+        else if(globalData == 2){
+            document.getElementById("output").innerHTML = "This message could contain a microaggression.";
+        }
+        else if(globalData == 3){
+            document.getElementById("output").innerHTML = "This message contains hate speech.";
+        }
+        else {
+            document.getElementById("output").innerHTML = "This message is clear of microaggressions and aggressions.";
+        }
+        }, 50);
     });
 
 
@@ -20,8 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const messengerSelect = document.getElementById('messengerSelect');
     const discordSelect = document.getElementById('discordSelect');
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const submitButton = document.getElementById('SubmitButton');
-    const inputText = document.getElementById('InputText');
 
     if (!twitterSelect || !facebookSelect || !instagramSelect || !messengerSelect || !discordSelect || !darkModeToggle || !submitButton || !inputText) {
         console.error('No Element Found');
