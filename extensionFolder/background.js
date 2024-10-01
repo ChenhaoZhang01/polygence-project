@@ -16,10 +16,12 @@ chrome.runtime.onMessage.addListener((request) => {
         .then(data => {
             console.log('Data received: ', data.label);
             const data1 = data.label;
+            const data2 = data.classify
             console.log('Updated Data: ', data1);
             chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
                 if (tabs.length > 0) {
                     chrome.tabs.sendMessage(tabs[0].id, { action: 'updateData', data: data1 });
+                    chrome.tabs.sendMessage(tabs[0].id, { action: 'updateData2', data1: data2 });
                 }
             });
         })
