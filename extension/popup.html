@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Microaggression Identifier</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Microaggression Identifier</h1>
+
+  <section>
+    <p class="head">Check a message</p>
+    <input type="text" id="inputText" placeholder="Type something to check...">
+    <button id="submitButton">Check</button>
+    <p id="output" class="output"></p>
+  </section>
+
+  <hr>
+
+  <section>
+    <p class="head">Per-site behavior</p>
+    <div class="dropdown" data-site="twitterSetting">
+      <span class="label">Twitter / X</span>
+      <select>
+        <option value="0">No identifying</option>
+        <option value="1">Warning text</option>
+        <option value="def">Warning text &amp; popup</option>
+        <option value="2">Block sending</option>
+      </select>
+    </div>
+    <div class="dropdown" data-site="facebookSetting">
+      <span class="label">Facebook</span>
+      <select>
+        <option value="0">No identifying</option>
+        <option value="1">Warning text</option>
+        <option value="def">Warning text &amp; popup</option>
+        <option value="2">Block sending</option>
+      </select>
+    </div>
+    <div class="dropdown" data-site="instagramSetting">
+      <span class="label">Instagram</span>
+      <select>
+        <option value="0">No identifying</option>
+        <option value="1">Warning text</option>
+        <option value="def">Warning text &amp; popup</option>
+        <option value="2">Block sending</option>
+      </select>
+    </div>
+    <div class="dropdown" data-site="messengerSetting">
+      <span class="label">Messenger</span>
+      <select>
+        <option value="0">No identifying</option>
+        <option value="1">Warning text</option>
+        <option value="def">Warning text &amp; popup</option>
+        <option value="2">Block sending</option>
+      </select>
+    </div>
+    <div class="dropdown" data-site="discordSetting">
+      <span class="label">Discord</span>
+      <select>
+        <option value="0">No identifying</option>
+        <option value="1">Warning text</option>
+        <option value="def">Warning text &amp; popup</option>
+        <option value="2">Block sending</option>
+      </select>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="actions">
+    <button id="darkModeToggle">Toggle dark mode</button>
+    <button id="resetDefaults">Reset to defaults</button>
+  </section>
+
+  <script src="severity.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

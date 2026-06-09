@@ -1,0 +1,3 @@
+# Chrome extension signing key — never commit. Keep a private backup.
+main.pem
+*.pem
