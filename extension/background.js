@@ -7,7 +7,10 @@
  * each content script) keeps the host permission and error handling in one place.
  */
 
-const DEFAULT_API_URL = "http://127.0.0.1:5000/print";
+// Production backend (Heroku). Override per-install by setting `apiUrl` in
+// chrome.storage.local, e.g. "http://127.0.0.1:5000/print" for local dev.
+const DEFAULT_API_URL =
+  "https://microaggression-identifier-d3d20a93b3c9.herokuapp.com/print";
 
 async function getApiUrl() {
   const { apiUrl } = await chrome.storage.local.get("apiUrl");
